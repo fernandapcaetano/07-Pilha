@@ -76,27 +76,22 @@ void inicializar()
 
 void push()
 {
-	// aloca memoria dinamicamente para o novo elemento
+	// aloca memória dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
+		cout << "Erro: memoria insuficiente \n";
 		return;
 	}
 
-	cout << "Digite o elemento: ";
+	cout << "Digite o valor a ser inserido: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
 	
-	if (topo == NULL) {
-		topo = novo;
-	}
-	else {
-		NO* aux = topo;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;
-	}
+	// insere o novo elemento no início da pilha
+	novo->prox = topo;
+	topo = novo;
+	cout << "Elemento inserido com sucesso \n";
+
 
 
 }
@@ -105,6 +100,25 @@ void pop()
 {
 
 	
+	// verifica se a pilha está vazia
+    if (topo == NULL)
+    {
+        cout << "A pilha está vazia." << endl;
+        return;
+    }
+
+    // cria um ponteiro auxiliar que aponta para o topo da pilha
+    NO* aux = topo;
+
+    // atribui o valor do campo valor do topo da pilha a uma variável elementoRemovido
+    int elementoRemovido = aux->valor;
+
+    // atribui o valor do campo prox do topo da pilha ao ponteiro topo
+    topo = topo->prox;
+
+    // desaloca a memória ocupada pelo elemento removido
+    free(aux);
+
+    cout << "Elemento " << elementoRemovido << " removido da pilha." << endl;
 
 }
-
