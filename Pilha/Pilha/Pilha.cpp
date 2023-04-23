@@ -61,6 +61,8 @@ void inicializar()
 
 	// se a lista já possuir elementos
 	// libera a memoria ocupada
+	//variável auxiliar, é possível evitar a perda da referência para o início da lista, o que permite reutilizar a variável "topo" para outras operações na lista.
+	//Quando uma lista é liberada da memória, não é possível mais acessá-la, por isso é importante ter cuidado com a manipulação de ponteiros para evitar vazamento de memória.
 	NO* aux = topo;
 	while (aux != NULL) {
 		NO* paraExcluir = aux;
